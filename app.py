@@ -22,5 +22,7 @@ def capture_picture():
 if __name__ == '__main__':
     if not os.path.exists('data'):
         os.makedirs('data')
+    else:
+        print 'data dir already exists'
 
 	app.run()
