@@ -1,36 +1,41 @@
 # Wireless Camera Data Collection
 
-Simple web tool to collect image data from small, wireless IP cameras (often marketed as "spycams" or security cameras).  The device used in this example is:
+Simple web tool to collect image data from small, wireless IP cameras (often marketed as "spycams" or security cameras).  The device used in this example is [this product](https://www.amazon.com/dp/B07QPF8XFM/ref=psdc_12909791_t2_B07TXGLRY7).
 
-# Hardware set up
+## Hardware set up
 
-Make sure the camera is charged because the connection drops quickly if it's not.  Switch it on with the slider switch, and then connect the computer to the camera's wifi network, which should start with CMS.
+Make sure the camera is charged because the connection drops quickly if it's not.  Switch it on with the slider switch, and then connect the computer to the camera's wifi network, which should be really long and start with CMS.
 
-# Software set up
+## Software set up
 
 Install dependencies:
+
 ```pip install flask```
 
-## Getting the IP address of the camera
+### Getting the IP address of the camera
 
 On Linux, use:
+
 ```ip route```
-The result will say "default via <ip>"
+
+The result will say "default via..."
 
 On Mac, use:
+
 ```arp -a```
-The result should be the first line (192.168.x.x)
+
+The result should be the first line (```192.168.x.x```)
 
 Make sure the IP address you find corresponds to the ```IP_ADDRESS``` variable in ```app.py```.  If not, be sure to update it.
 
-## Running the app
+### Running the app
 
 Simply run in a terminal:
 ```python2 app.py```
 
-A localhost URL should be printed out, such as 127.0.0.1:5000.  Navigate to that URL in a browser.
+A localhost URL should be printed out, such as ```127.0.0.1:5000```.  Navigate to that URL in a browser.
 
-# Using the app
+## Using the app
 
 You should see the live preview in the center of the screen.
 
