@@ -10,7 +10,7 @@ def hello_world():
 def capture_picture():
     file_name = request.headers.get('file_name')
     print('request take picture and save to: ' + file_name)
-    return 'success'
+    return {'status': 'success', 'data': file_name}
 
 if __name__ == '__main__':
 	app.run()

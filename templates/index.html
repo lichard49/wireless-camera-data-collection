@@ -63,11 +63,7 @@
 		<div class="row">
 			<div class="twelve columns">
 				<h5>Saved files</h5>
-				<ul>
-					<li>2019.11.26-23:28:21.png</li>
-					<li>lamp_2019.11.26-23:28:21.png</li>
-					<li>lamp_2019.11.26-23:28:21.png</li>
-					<li>lamp_2019.11.26-23:28:21_pink.png</li>
+				<ul id="saved_file_list">
 				</ul>
 			</div>
 		</div>
@@ -84,10 +80,11 @@
 				current_time.getDate().toString().padStart(2, '0') + '-' +
 				current_time.getHours().toString().padStart(2, '0') + ':' +
 				current_time.getMinutes().toString().padStart(2, '0') + ':' +
-				current_time.getSeconds().toString().padStart(2, '0');
+				current_time.getSeconds().toString().padStart(2, '0') + ':' +
+				current_time.getMilliseconds().toString().padStart(3, '0');
 
 			document.getElementById('file_name_time').innerHTML = current_time_formatted;
-		}, 1000);
+		}, 100);
 
 		document.getElementById('capture_button').onclick = function(e) {
 			var file_name_prefix = document.getElementById('file_name_prefix').value;
@@ -101,7 +98,14 @@
 			xhr.open('POST', '/capture_picture', true);
 			xhr.setRequestHeader('file_name', file_name);
 			xhr.onload = function () {
-				console.log(this.responseText);
+				var response = JSON.parse(this.responseText)
+				console.log(response['status']);
+				if (response['status'] == 'success') {
+					var list = document.getElementById('saved_file_list');
+					var item = document.createElement('li');
+					item.innerHTML = response['data'];
+					list.insertBefore(item, list.firstElementChild);
+				}
 			};
 			xhr.send();
 		}
