@@ -81,7 +81,16 @@
 			var file_name_time = document.getElementById('file_name_time').innerHTML;
 			var file_name_suffix = document.getElementById('file_name_suffix').value;
 			var file_name_type = document.getElementById('file_name_type').innerHTML;
-			console.log(file_name_prefix + ', ' + file_name_time + ', ' + file_name_suffix + ', ' + file_name_type);
+			var file_name = file_name_prefix + file_name_time + file_name_suffix + file_name_type;
+			console.log(file_name);
+
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', '/capture_picture', true);
+			xhr.setRequestHeader('file_name', file_name);
+			xhr.onload = function () {
+				console.log(this.responseText);
+			};
+			xhr.send();
 		}
 	</script>
 </body>
