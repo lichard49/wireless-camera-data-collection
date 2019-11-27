@@ -49,12 +49,12 @@
 			<div class="eight columns">
 				<label>Save as:</label>
 				<input placeholder="Optional: file_prefix" id="file_name_prefix">
-				<span>2019.11.26-23:28:21</span>
+				<span id="file_name_time">2019.11.26-23:28:21</span>
 				<input placeholder="Optional: file_suffix" id="file_name_suffix">
-				<span>.png</span>
+				<span id="file_name_type">.png</span>
 			</div>
 			<div class="four columns">
-				<input class="button-primary u-full-width" type="submit" value="capture!" style="position: relative; transform: translateY(25%)">
+				<input class="button-primary u-full-width" id="capture_button" type="submit" value="capture!" style="position: relative; transform: translateY(25%)">
 			</div>
 		</div>
 
@@ -75,5 +75,14 @@
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<script type="text/javascript">
+		document.getElementById('capture_button').onclick = function(e) {
+			var file_name_prefix = document.getElementById('file_name_prefix').value;
+			var file_name_time = document.getElementById('file_name_time').innerHTML;
+			var file_name_suffix = document.getElementById('file_name_suffix').value;
+			var file_name_type = document.getElementById('file_name_type').innerHTML;
+			console.log(file_name_prefix + ', ' + file_name_time + ', ' + file_name_suffix + ', ' + file_name_type);
+		}
+	</script>
 </body>
 </html>
